@@ -1,11 +1,12 @@
 import React from 'react';
-import ParkingGrid from "./Components/ParkingGrid";
+import Layout from './Components/Layout';
 
-export default function Home() {
+const AirbnbLayout = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <ParkingGrid/>
-      </div>
+    <div>
+      <Layout/>
+    </div>
   );
-}
+};
 
+export default AirbnbLayout;

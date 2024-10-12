@@ -1,0 +1,14 @@
+.map {
+  width: 33.333333%;
+  background-color: #f3f4f6;
+  padding: 1rem;
+}
+
+.mapContent {
+  height: 100%;
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
