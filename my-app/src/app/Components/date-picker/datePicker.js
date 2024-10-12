@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {DateRangePicker} from "@nextui-org/react";
 import {parseZonedDateTime} from "@internationalized/date";
-import "../Styles/date-picker.css"
+import "../../../../src/app/Styles/datePicker.css"
 const DateRangePickerComponent = () => {
 
     return (
