@@ -19,7 +19,7 @@ const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dat
         </div>
         <div className="price">
           <span className="old-price">${priceBefore}</span>
-          <span className="new-price">${priceNow} night</span>
+          <span className="new-price">${priceNow} / hour</span>
         </div>
       </div>
     </div>
