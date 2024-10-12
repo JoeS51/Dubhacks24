@@ -1,4 +1,6 @@
 import Image from "next/image";
+import ParkingCard from "./Components/ParkingCard";
+import parkingspot1 from "./Images/parkingspot.webp";
 
 export default function Home() {
   return (
@@ -96,6 +98,17 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <ParkingCard 
+        image="parkingspot1"
+        title="Guest suite in Seattle"
+        location="Seattle, WA"
+        rating={4.72}
+        reviews={72}
+        priceBefore={116}
+        priceNow={68}
+        dates="Oct 12 - 17"
+      />
+
     </div>
   );
 }
