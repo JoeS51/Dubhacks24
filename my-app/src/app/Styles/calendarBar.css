@@ -1,0 +1,27 @@
+.bar-div {
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.handle-search {
+    display: flex;
+    align-items: center;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity)) /* #ffffff */;
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.where-search {
+    width: 25%; /* Equivalent to w-1/4 */
+    padding-left: 1.5rem; /* Equivalent to px-6 */
+    padding-right: 1.5rem; /* Equivalent to px-6 */
+    padding-top: 0.75rem; /* Equivalent to py-3 */
+    padding-bottom: 0.75rem; /* Equivalent to py-3 */
+    border-top-left-radius: 9999px; /* Equivalent to rounded-l-full */
+    border-bottom-left-radius: 9999px; /* Equivalent to rounded-l-full */
+    outline: none; /* Equivalent to focus:outline-none */
+}
