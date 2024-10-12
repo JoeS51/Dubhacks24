@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from '../Styles/Navigation.css';
+import styles from '../Styles/Navigation.module.css';
+
+console.log(styles);
 
 const navigationItems = ['Your search', 'Beach', 'Amazing views', 'Rooms', 'Countryside', 'National parks', 'Lakefront', "Chef's kitchens", 'Amazing pools', 'Cabins', 'Vineyards', 'Beachfront'];
 

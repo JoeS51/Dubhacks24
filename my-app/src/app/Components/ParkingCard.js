@@ -6,7 +6,7 @@ const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dat
   return (
     <div className="parking-card">
       <div className="card-image">
-        <Image src={image} alt={title} />
+        <Image src={image} alt={title} priority/>
       </div>
       <div className="card-info">
         <h3>{title}</h3>

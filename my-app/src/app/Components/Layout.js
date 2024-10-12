@@ -2,7 +2,7 @@ import React from 'react';
 import TopBar from './TopBar';
 import Navigation from './Navigation';
 import MapContainer from './MapContainer';
-import styles from '../Styles/Layout.css';
+import styles from '../Styles/Layout.module.css';
 import ParkingGrid from './ParkingGrid';
 
 const Layout = () => {
