@@ -1,11 +1,12 @@
 import React from 'react';
+import Image from 'next/image';
 import '../Styles/ParkingCard.css'
 
 const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dates, location }) => {
   return (
     <div className="parking-card">
       <div className="card-image">
-        <img src={image} alt={title} />
+        <Image src={image} alt={title} />
       </div>
       <div className="card-info">
         <h3>{title}</h3>
