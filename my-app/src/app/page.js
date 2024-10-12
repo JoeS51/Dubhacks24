@@ -1,5 +1,6 @@
 import React from 'react';
 import ParkingGrid from "./Components/ParkingGrid";
+import Map from './Components/Map';
 
 export default function Home() {
   return (
