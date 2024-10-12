@@ -1,81 +1,35 @@
 "use client";
-// import * as React from 'react';
-// import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-// import { LocalizationProvider } from '@mui/x-date-pickers-pro/LocalizationProvider';
-// import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
-// import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-
-// export default function BasicDateRangePicker() {
-//   return (
-//     <LocalizationProvider dateAdapter={AdapterDayjs}>
-//       <DemoContainer components={['DateRangePicker']}>
-//         <DateRangePicker localeText={{ start: 'Check-in', end: 'Check-out' }} />
-//       </DemoContainer>
-//     </LocalizationProvider>
-//   );
-// }
-
-
 import React, { useState } from 'react';
 import {DateRangePicker} from "@nextui-org/react";
 import {parseZonedDateTime} from "@internationalized/date";
+import "../Styles/date-picker.css"
 const DateRangePickerComponent = () => {
-    // const [startDate, setStartDate] = useState('');
-    // const [endDate, setEndDate] = useState('');
-
-    // const handleStartDateChange = (event) => {
-    //     setStartDate(event.target.value);
-    // };
-
-    // const handleEndDateChange = (event) => {
-    //     setEndDate(event.target.value);
-    // };
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     if (startDate && endDate) {
-    //         alert(`Selected Range: ${startDate} to ${endDate}`);
-    //     } else {
-    //         alert('Please select both start and end dates.');
-    //     }
-    // };
 
     return (
-    //     <div style={{ margin: '20px' }}>
-    //         <h2>Select Date Range</h2>
-    //         <form onSubmit={handleSubmit}>
-    //             <div>
-    //                 <label>
-    //                     Start Date:
-    //                     <input
-    //                         type="date"
-    //                         value={startDate}
-    //                         onChange={handleStartDateChange}
-    //                     />
-    //                 </label>
-    //             </div>
-    //             <div>
-    //                 <label>
-    //                     End Date:
-    //                     <input
-    //                         type="date"
-    //                         value={endDate}
-    //                         onChange={handleEndDateChange}
-    //                     />
-    //                 </label>
-    //             </div>
-    //             <button type="submit">Submit</button>
-    //         </form>
-    //         {startDate && endDate && (
-    //             <div>
-    //                 <p>
-    //                     You selected a range from {startDate} to {endDate}.
-    //                 </p>
-    //             </div>
-    //         )}
-    //     </div>
-    <div className="w-full max-w-xl flex flex-row gap-4">
+    <div className="date-range-picker">
       <DateRangePicker
+       calendarProps={{
+        classNames: {
+          base: "bg-background",
+          headerWrapper: "pt-4 bg-background",
+          prevButton: "border-1 border-default-200 rounded-small",
+          nextButton: "border-1 border-default-200 rounded-small",
+          gridHeader: "bg-background shadow-none border-b-1 border-default-100",
+          cellButton: [
+            "data-[today=true]:bg-default-100 data-[selected=true]:bg-transparent rounded-small",
+            // start (pseudo)
+            "data-[range-start=true]:before:rounded-l-small",
+            "data-[selection-start=true]:before:rounded-l-small",
+            // end (pseudo)
+            "data-[range-end=true]:before:rounded-r-small",
+            "data-[selection-end=true]:before:rounded-r-small",
+            // start (selected)
+            "data-[selected=true]:data-[selection-start=true]:data-[range-selection=true]:rounded-small",
+            // end (selected)
+            "data-[selected=true]:data-[selection-end=true]:data-[range-selection=true]:rounded-small",
+          ],
+        },
+    }}
         label="Event duration"
         hideTimeZone
         visibleMonths={2}
