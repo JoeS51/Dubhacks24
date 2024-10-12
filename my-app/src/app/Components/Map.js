@@ -69,11 +69,6 @@ export default function Map() {
           <p>Loading...</p>
         )}
       </div>
-
-      {/* Right half for other content */}
-      <div className="flex items-center justify-center bg-gray-100">
-        <h1 className="text-2xl font-bold">Right Side Content</h1>
-      </div>
     </div>
   );
 }

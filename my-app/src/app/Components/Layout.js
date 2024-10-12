@@ -1,15 +1,15 @@
 import React from 'react';
 import TopBar from './TopBar';
-import Navigation from './Navigation';
 import MapContainer from './MapContainer';
 import styles from '../Styles/Layout.module.css';
 import ParkingGrid from './ParkingGrid';
+import CalendarBar from './CalendarBar';
 
 const Layout = () => {
     return (
       <div className={styles.layout}>
         <TopBar/>
-        <Navigation/>
+        <CalendarBar/>
         <div className={styles.mainContent}>
           <ParkingGrid/>
           <MapContainer/>

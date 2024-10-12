@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from '../Styles/MapContainer.module.css';
+import Map from './Map';
 
-const Map = () => {
+const MapContainer = () => {
   return (
     <div className={styles.map}>
       <div className={styles.mapContent}>
-        Map goes here
+        <Map/>
       </div>
     </div>
   );
 };
 
-export default Map;
+export default MapContainer;
