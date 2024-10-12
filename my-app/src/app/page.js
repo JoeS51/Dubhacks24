@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ParkingCard from "./Components/ParkingCard";
 import parkingSpot1 from "./Images/parkingspot.jpg";
+import DateRangePickerComponent from './Components/date-picker/date-picker';
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
         priceNow={68}
         dates="Oct 12 - 17"
       />
+      <DateRangePickerComponent>
 
+      </DateRangePickerComponent>
     </div>
   );
 }
