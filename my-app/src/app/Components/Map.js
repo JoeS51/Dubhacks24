@@ -5,6 +5,7 @@ import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import { useSelector } from 'react-redux';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
+import axios from 'axios';
 
 const API_KEY = 'AIzaSyCkuzW1WbWBbDGhQsT5aIKR2q4ww1RnFKQ';
 
@@ -21,6 +22,22 @@ export default function GoogleMapComponent() {
   const destination = useSelector((state) => state.map.destination);
   const initialPos = { lat: 47.65, lng: -122.3 };
   const [center, setCenter] = useState(initialPos);
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch data
+    const fetchListings = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/listings/get');
+        console.log('API Response:', response.data); // Log the JSON data to console
+        setListings(response.data); // Optionally, store data in state
+      } catch (error) {
+        console.error('Error fetching listings:', error);
+      }
+    };
+
+    fetchListings();
+  }, []);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: API_KEY,
