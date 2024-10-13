@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import parkingSpot1 from "../Images/parkingspot.jpg";
+import parking2 from '../Images/park1.jpg';
+import parking3 from '../Images/park2.jpg';
 import trien from "../Images/trien_vuong.jpg";
 import TopBarClean from "../Components/TopBarClean";
 
@@ -25,7 +27,7 @@ const reservedParkingSpaces = [
     location: "San Francisco, CA",
     dates: "Nov 2 - Nov 5",
     price: 90,
-    image: parkingSpot1, // Pass the image directly
+    image: parking2, // Pass the image directly
   },
   // Add more reservations if needed
 ];
@@ -35,7 +37,7 @@ const myParkingSpaces = [
       location: "Bellevue, WA",
       dates: "Oct 14 - Oct 20",
       price: 5,
-      image: parkingSpot1, // Pass the image directly, not as an object
+      image: parking3, // Pass the image directly, not as an object
     },
     // Add more reservations if needed
   ];
@@ -81,7 +83,7 @@ const ProfilePage = () => {
                 <div className="w-2/3 pl-4">
                   <h4 className="text-lg font-semibold">{space.location}</h4>
                   <p className="text-gray-600">{space.dates}</p>
-                  <p className="text-gray-800">${space.price} / total</p>
+                  <p className="text-gray-800">Total: ${space.price}</p>
                 </div>
               </div>
             ))}
@@ -108,7 +110,7 @@ const ProfilePage = () => {
                 <div className="w-2/3 pl-4">
                   <h4 className="text-lg font-semibold">{space.location}</h4>
                   <p className="text-gray-600">{space.dates}</p>
-                  <p className="text-gray-800">${space.price} / total</p>
+                  <p className="text-gray-800">${space.price} / hr</p>
                 </div>
               </div>
             ))}
