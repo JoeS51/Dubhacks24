@@ -73,20 +73,6 @@ const BookingWidget = ({id, rate}) => {
           'Content-Type': 'application/json',
       }
       })
-      // const url = 'http://localhost:4000/api/listings/get/' + currId
-      // await axios.post(url, {
-      //   params: currId,
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      // }
-      // })
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(currId)
-      //   console.log(error);
-      // });
     } catch (error) {
       console.error("Error updating listing", error);
     }
