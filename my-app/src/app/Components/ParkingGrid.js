@@ -50,12 +50,12 @@ const ParkingGrid = () => {
 
           <ParkingCard
             image={images[index % images.length]}
-            title={listing.title}
-            location={listing.address.city + ", " + listing.address.state}
-            rating={listing.rating}
-            reviews={listing.numRatings}
-            priceNow={listing.price}
-            dates={`Now - ${formatDate(listing.end)}`}
+            title={listing?.title}
+            location={listing?.address?.city + ", " + listing?.address?.state}
+            rating={listing?.rating}
+            reviews={listing?.numRatings}
+            priceNow={listing?.price}
+            dates={`Now - ${formatDate(listing?.end)}`}
             key={listing._id}
             id={listing._id}
           />
