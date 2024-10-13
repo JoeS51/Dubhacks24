@@ -27,33 +27,24 @@ export default function JayPark() {
   return (
     <div
       className="min-h-screen relative"
-      style={{ backgroundColor: "#90D5FF" }} // Warm yellow background FFD966
+      style={{
+        backgroundColor: "#90D5FF",
+        margin: 0,
+        padding: 0,
+        width: "100%",
+        height: "100vh", // Ensures it fills the viewport height
+        overflow: "hidden", // Prevents unwanted scrollbars
+      }}
     >
-      {/* Title with high z-index to stay on top */}
-      <h1
-        className="absolute top-10 w-full text-center text-6xl font-bold"
-        style={{
-          fontFamily: "'Montserrat', sans-serif", // Custom Font
-          fontSize: "8rem", // Bigger font size
-          color: "#FFFFFF",
-          textShadow: "4px 4px 8px rgba(0, 0, 0, 0.3)", // More pronounced shadow
-          zIndex: 10, // Keep on top
-          pointerEvents: "none", // Prevent blocking interactions
-        }}
-      >
-        SpotLite.
-      </h1>
-
-      {/* 3D Model Canvas */}
       <div
         className="flex items-center justify-center h-full"
-        style={{ zIndex: 1 }} // Lower z-index for canvas
+        style={{ zIndex: 1, width: "100%", height: "100%" }}
       >
         <Canvas
           style={{ width: "100%", height: "100%" }}
           camera={{
-            position: [-20, 20, 20], // Adjust camera to fit the model
-            fov: 45, // Natural perspective
+            position: [-20, 20, 20],
+            fov: 45,
           }}
         >
           <CameraSetup />
@@ -68,3 +59,4 @@ export default function JayPark() {
     </div>
   );
 }
+
