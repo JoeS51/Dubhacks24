@@ -58,7 +58,7 @@ const SpotsPage = () => {
             <AboutPlace description={info?.description} />
           </div>
           <div className="w-1/3">
-            <BookingWidget rate={info?.price}/>
+            <BookingWidget id={id} rate={info?.price}/>
           </div>
         </div>
         </div>

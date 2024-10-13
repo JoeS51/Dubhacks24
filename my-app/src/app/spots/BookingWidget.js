@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import { format, parseISO } from "date-fns";
+import axios from "axios";
 // components/BookingWidget.js
-const BookingWidget = ({rate}) => {
+const BookingWidget = ({id, rate}) => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [estimatedPrice, setEstimatedPrice] = useState(null); // State to hold the estimated price
   const hourlyRate = rate; // Price per hour
-
+  const currId = id;
   const isButtonDisabled = () => {
     return checkIn === "" || checkOut === "";
   };
@@ -57,14 +58,38 @@ const BookingWidget = ({rate}) => {
     }
   };
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     handleClick();
 
-    fetch("/add", {
-      method: "POST",
-      body: body,
-      headers: { "Content-Type": "application/json" },
-    });
+     try {
+      const url = `http://localhost:4000/api/listings/get/${currId}`;
+      const response = await axios.get(url);
+      response.occupied = "yes";
+      console.log('Listing data:', response.data);
+
+      await axios.post('http://localhost:4000/api/listings/add', {
+        body: response,
+        headers: {
+          'Content-Type': 'application/json',
+      }
+      })
+      // const url = 'http://localhost:4000/api/listings/get/' + currId
+      // await axios.post(url, {
+      //   params: currId,
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      // }
+      // })
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(currId)
+      //   console.log(error);
+      // });
+    } catch (error) {
+      console.error("Error updating listing", error);
+    }
   };
 
   return (
