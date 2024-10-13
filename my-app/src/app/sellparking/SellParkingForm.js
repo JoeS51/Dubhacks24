@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 
 function SellParkingForm() {
@@ -18,6 +17,10 @@ function SellParkingForm() {
       street: ""
     }
   });
+
+  const printForm = () => {
+    console.log(formData);
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,18 +54,20 @@ function SellParkingForm() {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/listings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newListing),
-      });
-      if (response.ok) {
-        alert("Listing submitted successfully!");
-      } else {
-        alert("Failed to submit the listing.");
-      }
+      // const response = await fetch("http://localhost:5000/api/listings", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(newListing),
+      // });
+      // if (response.ok) {
+      //   alert("Listing submitted successfully!");
+      // } else {
+      //   alert("Failed to submit the listing.");
+      // }
+
+      
     } catch (error) {
       console.error("Error submitting listing", error);
     }
@@ -206,6 +211,7 @@ function SellParkingForm() {
         <button
           type="submit"
           className="px-6 py-2 text-white bg-blue-500 rounded-md"
+          onClick={printForm}
         >
           Submit Listing
         </button>
