@@ -19,7 +19,6 @@ const TopBarClean = () => {
         <Link href="/" passHref>
             <button className={styles.navButton}>Reserve Now</button>
         </Link>
-        <button className={styles.navButton}>About Us</button>
       </div>
       <div className={styles.userOptions}>
         <span>SpotLite your Garage</span>
