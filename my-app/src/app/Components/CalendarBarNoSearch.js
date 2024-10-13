@@ -2,15 +2,11 @@
 
 import React, { useState } from "react";
 import { format, parseISO } from "date-fns";
-import { useDispatch, useSelector } from "react-redux";
-import { setDestination } from "../../../store/store"; // Import Redux action
 
-const CalendarBar = () => {
-  const [destination, setLocalDestination] = useState(""); // Renamed local state
+const CalendarBarNoSearch = () => {
+  const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
-  const dispatch = useDispatch();
-  const destinationTwo = useSelector((state) => state.map.destination); // Get Redux state
 
   const handleCheckInChange = (e) => {
     setCheckIn(e.target.value);
@@ -28,7 +24,8 @@ const CalendarBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Searching for:", { destination: destinationTwo, checkIn, checkOut });
+    // Implement search functionality here
+    console.log("Searching for:", { destination, checkIn, checkOut, guests });
   };
 
   const formatDateTime = (dateString) => {
@@ -40,6 +37,8 @@ const CalendarBar = () => {
   return (
     <div className="bar-div">
       <div className="flex items-center">
+        {" "}
+        {/* Flex container for the form and button */}
         <form
           onSubmit={handleSearch}
           className="flex items-center bg-white rounded-full shadow-lg"
@@ -49,12 +48,7 @@ const CalendarBar = () => {
               type="text"
               placeholder="Where"
               value={destination}
-              onChange={(e) => {
-                const value = e.target.value; // Define 'value' correctly inside the function
-                console.log("PLZZZZ", value); // Debugging log
-                setLocalDestination(value); // Update local state
-                dispatch(setDestination(value)); // Dispatch Redux action
-              }}
+              onChange={(e) => setDestination(e.target.value)}
               className="w-1/3 px-6 py-3 rounded-l-full focus:outline-none text-black"
             />
             <div className="w-1/3 px-6 py-3">
@@ -64,7 +58,7 @@ const CalendarBar = () => {
                 onFocus={(e) => (e.target.type = "datetime-local")}
                 onBlur={(e) => (e.target.type = "text")}
                 value={checkIn ? formatDateTime(checkIn) : ""}
-                onChange={handleCheckInChange}
+                onChange={(e) => handleCheckInChange(e)}
                 className="w-full focus:outline-none text-black"
               />
             </div>
@@ -75,7 +69,7 @@ const CalendarBar = () => {
                 onFocus={(e) => (e.target.type = "datetime-local")}
                 onBlur={(e) => (e.target.type = "text")}
                 value={checkOut ? formatDateTime(checkOut) : ""}
-                onChange={handleCheckOutChange}
+                onChange={(e) => handleCheckOutChange(e)}
                 className="w-full focus:outline-none text-black"
               />
             </div>
@@ -83,7 +77,7 @@ const CalendarBar = () => {
         </form>
         <button
           type="submit"
-          className="bg-customBlue text-white p-4 rounded-full hover:bg-customBlueHover focus:outline-none ml-4"
+          className="bg-customBlue text-white p-4 rounded-full hover:bg-customBlueHover focus:outline-none ml-4" // Added margin-left for spacing
         >
           Search
         </button>
@@ -92,4 +86,4 @@ const CalendarBar = () => {
   );
 };
 
-export default CalendarBar;
+export default CalendarBarNoSearch;
