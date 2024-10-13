@@ -124,4 +124,17 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
+  router.get('/read', async (req, res) => {
+    try {
+      Listing.find({}, (err, result) => {
+        // console.log(result);
+        res.body = result;
+        res.status(201).json({ message: "listings fetched successfully!", listing: result});
+    })
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Internal Server Error", error: err.message }); // Include error message in response
+    }
+  });
+
 export default router;

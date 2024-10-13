@@ -8,7 +8,17 @@ const BookingWidget = () => {
   const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
+  
 
+  // const["checkIn", handleCheckInChange] = useState("");
+  const isButtonDisabled = () => {
+     if (checkIn != "" && checkOut != "") {
+      return true;
+     }
+     return false;
+  }
+
+ 
   return (
     <div className="border rounded-xl p-6 shadow-lg">
       <div class="text-xl">
@@ -21,7 +31,7 @@ const BookingWidget = () => {
           onFocus={(e) => (e.target.type = "datetime-local")}
           onBlur={(e) => (e.target.type = "text")}
           value={checkIn ? formatDateTime(checkIn) : ""}
-          onChange={(e) => handleCheckInChange(e)}
+          onChange={(e) => setCheckIn(e)}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 ease-in-out" 
         />
       </div>
@@ -32,11 +42,12 @@ const BookingWidget = () => {
           onFocus={(e) => (e.target.type = "datetime-local")}
           onBlur={(e) => (e.target.type = "text")}
           value={checkOut ? formatDateTime(checkOut) : ""}
-          onChange={(e) => handleCheckOutChange(e)}
+          onChange={(e) => setCheckOut(e)}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 ease-in-out"
         />
       </div>
-      <button className="w-full bg-customBlue text-white py-3 rounded-lg mt-4 hover:bg-customBlueHover">
+      <button className="w-full bg-customBlue text-white py-3 rounded-lg mt-4 hover:bg-customBlueHover"
+      disabled={isButtonDisabled}>
         Reserve
       </button>
       <p className="text-center text-sm mt-2">You won't be charged yet</p>
