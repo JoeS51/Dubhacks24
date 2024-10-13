@@ -3,58 +3,50 @@ import mongoose from 'mongoose';
 const listingSchema = new mongoose.Schema({
   parentUsername: {
     type: String,
-    required: false,
-    default: "foo" // Default value for parentUsername
+    required: true
+ fault value for parentUsername
+
   },
   position: {
     type: {
       type: String, 
       enum: ['Point'], 
-      required: false,
-      default: 'Point' // Default value for position.type
+      required: true
     },
     coordinates: {
       type: [Number], // Array of numbers representing longitude and latitude
-      required: false,
-      default: [0, 0] // Default coordinates
+      required: true
     }
   },
   address: {
     city: {
       type: String,
-      required: false,
-      default: "Unknown City" // Default value for city
+      required: true
     },
     state: {
       type: String,
-      required: false,
-      default: "Unknown State" // Default value for state
+      required: true
     },
     zipcode: {
       type: String,
-      required: false,
-      default: "00000" // Default value for zipcode
+      required: true
     },
     street: {
       type: String,
-      required: false,
-      default: "Unknown Street" // Default value for street
+      required: true
     }
   },
   start: {
     type: Date, // Use Date type for timestamps
-    required: false,
-    default: Date.now // Default to current date/time
+    required: true
   },
   end: {
     type: Date, // Use Date type for timestamps
-    required: false,
-    default: Date.now // Default to current date/time
+    required: true
   },
   price: {
     type: Number, // Use Number type for price
-    required: false,
-    default: 0 // Default price
+    required: true
   },
   rating: {
     type: Number, // Use Number type for price
@@ -68,13 +60,11 @@ const listingSchema = new mongoose.Schema({
   },
   title: {
     type: String, // Use Number type for price
-    required: false,
-    default: "Untitled" // Default value for title
+    required: true
   },
   occupied: {
     type: Boolean,
-    required: false,
-    default: false // Default to not occupied
+    required: true
   },
   type: {
     type: String,
