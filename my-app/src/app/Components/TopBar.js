@@ -22,9 +22,13 @@ const TopBar = () => {
         <CalendarBar/>
       </div>
       <div className={styles.userOptions}>
-        <span style={{ color: 'black' }}>SpotLite your Garage</span>
+      <Link href="/sellparking">
+         <span style={{ color: 'black' }}>SpotLite your Garage</span>
+        </Link>
         <span>🌐</span>
-        <Image src={trien} width="40" height="40" className='rounded-full mr-4'/>
+        <Link href="/profile" passHref>
+          <Image src={trien} width="40" height="40" className='rounded-full mr-4'/>
+        </Link>
 
       </div>
     </div>

@@ -4,6 +4,7 @@ import CalendarBarNoSearch from './CalendarBarNoSearch';
 import Link from 'next/link';
 import icon from '../Images/icon.png'
 import Image from 'next/image'
+import trien from '../Images/trien_vuong.jpg'
 
 const TopBarNoSearch = () => {
   return (
@@ -20,10 +21,15 @@ const TopBarNoSearch = () => {
       </Link>
       <CalendarBarNoSearch/>
       <div className={styles.userOptions}>
-        <span style={{ color: 'black' }}>SpotLite your Garage</span>
+      <Link href="/sellparking">
+      <span style={{ color: 'black' }}>SpotLite your Garage</span>
+        </Link>
+        
 
         <span>🌐</span>
-        <div className={styles.userIcon}>👤</div>
+        <Link href="/profile" passHref>
+          <Image src={trien} width="40" height="40" className='rounded-full mr-4'/>
+        </Link>
       </div>
     </div>
   );
