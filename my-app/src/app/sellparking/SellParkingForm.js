@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-
+import axios from "axios";
 function SellParkingForm() {
   const [formData, setFormData] = useState({
     parentUsername: "",
@@ -49,25 +49,29 @@ function SellParkingForm() {
       start: new Date(formData.start).toISOString(),
       end: new Date(formData.end).toISOString(),
       price: formData.price,
+      rating: "n/a",
+      title: "n/a",
       description: formData.description,
       address: formData.address,
+      occupied: "yes",
     };
 
-    try {
-      // const response = await fetch("http://localhost:5000/api/listings", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(newListing),
-      // });
-      // if (response.ok) {
-      //   alert("Listing submitted successfully!");
-      // } else {
-      //   alert("Failed to submit the listing.");
-      // }
+    // const newListing = formData;
 
-      
+    try {
+      await axios.post('http://localhost:4000/api/listings/add', {
+        body: newListing,
+        headers: {
+          'Content-Type': 'application/json',
+      }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(newListing)
+        console.log(error);
+      });
     } catch (error) {
       console.error("Error submitting listing", error);
     }

@@ -1,7 +1,7 @@
 import express from 'express'
 import Listing from '../model/listing.model.js';
 import mongoose from 'mongoose';
-
+// import Listing from '../model/listing.model.js';
 const router = express.Router();
 
 router.get('/get/:id', async (req, res) => {
