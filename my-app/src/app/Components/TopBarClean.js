@@ -1,11 +1,20 @@
 import React from 'react';
 import styles from '../Styles/TopBar.module.css';
 import Link from 'next/link';
+import icon from '../Images/icon.png'
+import Image from 'next/image'
 
 const TopBarClean = () => {
   return (
     <div className={styles.topBar}>
-      <div className={styles.logo}>SpotLite</div>
+      <div className={styles.logo}>
+        <Image
+            src={icon}
+            width={40}
+            height={40}
+        />
+        SpotLite
+        </div>
       <div className={styles.navItems}>
         <Link href="/" passHref>
             <button className={styles.navButton}>Reserve Now</button>
