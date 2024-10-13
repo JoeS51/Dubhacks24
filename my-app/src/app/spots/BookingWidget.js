@@ -7,7 +7,6 @@ const BookingWidget = ({rate}) => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [estimatedPrice, setEstimatedPrice] = useState(null); // State to hold the estimated price
-
   const hourlyRate = rate; // Price per hour
 
   const isButtonDisabled = () => {
