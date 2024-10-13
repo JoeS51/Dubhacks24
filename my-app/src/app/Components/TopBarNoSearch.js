@@ -1,27 +1,23 @@
 import React from 'react';
 import styles from '../Styles/TopBar.module.css';
-import CalendarBar from './CalendarBar';
+import CalendarBarNoSearch from './CalendarBarNoSearch';
 import Link from 'next/link';
-import trien from '../Images/trien_vuong.jpg'
-import Image from 'next/image';
 
-const TopBar = () => {
+const TopBarNoSearch = () => {
   return (
     <div className={styles.topBar}>
       <Link href="/JayPark" passHref>
         <div className={styles.logo}>SpotLite</div>
       </Link>
-      <div className={styles.navItems}>
-        <CalendarBar/>
-      </div>
+      <CalendarBarNoSearch/>
       <div className={styles.userOptions}>
         <span style={{ color: 'black' }}>SpotLite your Garage</span>
-        <span>🌐</span>
-        <Image src={trien} width="40" height="40" className='rounded-full mr-4'/>
 
+        <span>🌐</span>
+        <div className={styles.userIcon}>👤</div>
       </div>
     </div>
   );
 };
 
-export default TopBar;
+export default TopBarNoSearch;

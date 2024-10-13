@@ -13,7 +13,6 @@ const ParkingGrid = () => {
           location="Seattle, WA"
           rating={4.72}
           reviews={72}
-          priceBefore={116}
           priceNow={3}
           dates="Now - 5 hours"
         />
@@ -33,7 +32,6 @@ const ParkingGrid = () => {
           location="Seattle, WA"
           rating={4.74}
           reviews={39}
-          priceBefore={161}
           priceNow={5}
           dates="Now - 17"
         />

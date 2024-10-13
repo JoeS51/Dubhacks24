@@ -5,13 +5,13 @@ import HostInfo from './HostInfo';
 import Amenities from './Amenities';
 import BookingWidget from './BookingWidget';
 import AboutPlace from './AboutPlace';
-import TopBar from '../Components/TopBar';
+import TopBarNoSearch from '../Components/TopBarNoSearch';
 import styles from '../Styles/Layout.module.css';
 
 const SpotsPage = () => {
   return (
     <div className={styles.layout}>
-      <TopBar/>
+      <TopBarNoSearch/>
       <div className="overflow-auto h-screen"> {/* Set a height for scrollable area */}
         <div className="mx-10">
         <h1 className="text-3xl font-bold mt-6 mb-4">Seattle Parking</h1>
@@ -19,10 +19,10 @@ const SpotsPage = () => {
           <div>
             <span className="font-semibold">Parking in Seattle, Washington</span>
           </div>
-          <div>
+          {/* <div>
             <button className="mr-4">Share</button>
             <button>Save</button>
-          </div>
+          </div> */}
         </div>
         <ImageGallery />
         <div className="flex mt-8">
