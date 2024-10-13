@@ -10,13 +10,14 @@ import styles from '../Styles/Layout.module.css';
 
 const SpotsPage = () => {
   return (
-    <div className="styles.layout">
+    <div className={styles.layout}>
       <TopBar/>
-      <div className="mx-10 overflow-auto">
-        <h1 className="text-3xl font-bold mt-6 mb-4">Avenue parking</h1>
+      <div className="overflow-auto h-screen"> {/* Set a height for scrollable area */}
+        <div className="mx-10">
+        <h1 className="text-3xl font-bold mt-6 mb-4">Seattle Parking</h1>
         <div className="flex justify-between items-center mb-4">
           <div>
-            <span className="font-semibold">Street parking in Seattle, Washington</span>
+            <span className="font-semibold">Parking in Seattle, Washington</span>
           </div>
           <div>
             <button className="mr-4">Share</button>
@@ -35,23 +36,11 @@ const SpotsPage = () => {
             <BookingWidget />
           </div>
         </div>
+        </div>
+        
       </div>
-      
     </div>
   );
 };
 
 export default SpotsPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
