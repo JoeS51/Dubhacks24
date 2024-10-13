@@ -1,30 +1,13 @@
 "use client";
 import React, { useState } from 'react';
-import DateRangePickerComponent from '../date-picker/datePicker';
+import { format, parseISO } from 'date-fns';
+
 const CalendarBarComponent = () => {
 
     const [destination, setDestination] = useState('');
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [guests, setGuests] = useState('');
-
-    // useEffect(() => {
-    //     validateDates();
-    //   }, [checkIn, checkOut]);
-
-    const validateDates = () => {
-    if (checkIn && checkOut) {
-        const checkInDate = new Date(checkIn);
-        const checkOutDate = new Date(checkOut);
-        if (checkOutDate <= checkInDate) {
-        setDateError('Check-out date must be after check-in date');
-        } else {
-        setDateError('');
-        }
-    } else {
-        setDateError('');
-    }
-    };
     
     const handleCheckInChange = (e) => {
         setCheckIn(e.target.value);
@@ -40,58 +23,64 @@ const CalendarBarComponent = () => {
         }
       };
 
-
     const handleSearch = (e) => {
         e.preventDefault();
         // Implement search functionality here
         console.log('Searching for:', { destination, checkIn, checkOut, guests });
       };
     
+
+    const formatDateTime = (dateString) => {
+        if (!dateString) return '';
+        const date = parseISO(dateString);
+        return format(date, "MM/dd/yyyy hh:mm aa");
+    };
+
     return (
-        <div className="bar-div">
+    <div className="bar-div">
+    <div className="flex items-center"> {/* Flex container for the form and button */}
         <form onSubmit={handleSearch} className="flex items-center bg-white rounded-full shadow-lg">
-          <div className="flex items-center divide-x">
-            <input
-              type="text"
-              placeholder="Where"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              className="w-1/3 px-6 py-3 rounded-l-full focus:outline-none text-black"
-            />
-            <div className="w-1/3 px-6 py-3">
-              <input
-                type="text"
-                placeholder="Check in"
-                onFocus={(e) => (e.target.type = 'date')}
-                onBlur={(e) => (e.target.type = 'text')}
-                value={checkIn}
-                onChange={(e) => handleCheckInChange(e)}
-                className="w-full focus:outline-none text-black"
-              />
+            <div className="flex items-center divide-x">
+                <input
+                    type="text"
+                    placeholder="Where"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    className="w-1/3 px-6 py-3 rounded-l-full focus:outline-none text-black"
+                />
+                <div className="w-1/3 px-6 py-3">
+                    <input
+                        type="text"
+                        placeholder="Check in"
+                        onFocus={(e) => (e.target.type = 'datetime-local')}
+                        onBlur={(e) => (e.target.type = 'text')}
+                        value={checkIn ? formatDateTime(checkIn) : ''}
+                        onChange={(e) => handleCheckInChange(e)}
+                        className="w-full focus:outline-none text-black"
+                    />
+                </div>
+                <div className="w-1/3 px-6 py-3">
+                    <input
+                        type="text"
+                        placeholder="Check out"
+                        onFocus={(e) => (e.target.type = 'datetime-local')}
+                        onBlur={(e) => (e.target.type = 'text')}
+                        value={checkOut ? formatDateTime(checkOut) : ''}
+                        onChange={(e) => handleCheckOutChange(e)}
+                        className="w-full focus:outline-none text-black"
+                    />
+                </div>
             </div>
-            <div className="w-1/3 px-6 py-3">
-              <input
-                type="text"
-                placeholder="Check out"
-                onFocus={(e) => (e.target.type = 'date')}
-                onBlur={(e) => (e.target.type = 'text')}
-                value={checkOut}
-                onChange={(e) => handleCheckOutChange(e)}
-                className="w-full focus:outline-none text-black"
-              />
-            </div>
-            {/* <input
-              type="text"
-              placeholder="Who"
-              value={guests}
-              onChange={(e) => setGuests(e.target.value)}
-              className="w-1/4 px-6 py-3 focus:outline-none"
-            /> */}
-          </div>
-          {/* <button type="submit" className="bg-red-500 text-white p-4 rounded-full hover:bg-red-600 focus:outline-none"> */}
-          {/* </button> */}
         </form>
-      </div>
+        <button
+            type="submit"
+            className="bg-red-500 text-white p-4 rounded-full hover:bg-red-600 focus:outline-none ml-4" // Added margin-left for spacing
+        >
+            Search
+        </button>
+    </div>
+</div>
+
     );
 };
 
