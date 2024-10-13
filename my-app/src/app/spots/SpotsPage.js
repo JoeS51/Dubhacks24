@@ -11,6 +11,8 @@ import TopBarNoSearch from '../Components/TopBarNoSearch';
 import styles from '../Styles/Layout.module.css';
 import { useSearchParams } from 'next/navigation'
 import axios from 'axios';
+import TopBarClean from '../Components/TopBarClean';
+
 
 const SpotsPage = () => {
   const searchParams = useSearchParams()
@@ -36,7 +38,7 @@ const SpotsPage = () => {
 
   return (
     <div className={styles.layout}>
-      <TopBarNoSearch/>
+      <TopBarClean/>
       <div className="overflow-auto h-screen"> {/* Set a height for scrollable area */}
         <div className="mx-10">
         <h1 className="text-3xl font-bold mt-6 mb-4">Seattle Parking</h1>
