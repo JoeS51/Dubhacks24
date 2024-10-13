@@ -31,6 +31,36 @@ router.get('/get/:id', async (req, res) => {
     }
 });
 
+router.get('/nearby', async (req, res) => {
+    try {
+        const { lat, lng, maxDistanceInMiles } = req.query; // Expect maxDistance in miles
+
+        if (!lat || !lng) {
+            return res.status(400).json({ message: 'Latitude and longitude are required' });
+        }
+
+        // Convert maxDistance from miles to meters (1 mile = 1609.34 meters)
+        const maxDistance = maxDistanceInMiles ? parseFloat(maxDistanceInMiles) * 1609.34 : 1000000; // Default to 1,000,000 meters if not provided
+
+        const nearbyListings = await Listing.aggregate([
+            {
+                $geoNear: {
+                    near: { type: "Point", coordinates: [parseFloat(lng), parseFloat(lat)] },
+                    distanceField: "distance",
+                    maxDistance: maxDistance,
+                    spherical: true
+                }
+            }
+        ]);
+
+        res.status(200).json(nearbyListings);
+    } catch (error) {
+        console.error("Error fetching nearby listings:", error);
+        res.status(500).json({ message: 'Error fetching nearby listings', error: error.message });
+    }
+});
+
+
 router.get('/get', async (req, res) => {
     try {
         const listings = await Listing.find(); // Fetch all listings from the database
