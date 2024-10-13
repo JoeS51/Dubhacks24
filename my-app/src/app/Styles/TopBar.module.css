@@ -9,6 +9,28 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
+.navItems {
+  display: flex;
+  position: relative;
+  top: 0px;
+  left:50px;
+  gap: 20px;
+}
+
+.navButton {
+  padding: 8px 16px;
+  background-color: #1e90ff; /* Dodger blue for buttons */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.navButton:hover {
+  background-color: #4169e1; /* Royal blue for hover state */
+}
+
 .logo {
   color: #4dbbff;
   font-size: 1.5rem;

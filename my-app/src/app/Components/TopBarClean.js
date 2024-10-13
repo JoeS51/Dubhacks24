@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from '../Styles/TopBarClean.module.css';
+import styles from '../Styles/TopBar.module.css';
 import Link from 'next/link';
 
 const TopBarClean = () => {
   return (
-    <div className={styles.topBarClean}>
+    <div className={styles.topBar}>
       <div className={styles.logo}>SpotLite</div>
       <div className={styles.navItems}>
         <Link href="/" passHref>
-            <button className={styles.navButton}>Reservation</button>
+            <button className={styles.navButton}>Reserve Now</button>
         </Link>
         <button className={styles.navButton}>About Us</button>
       </div>
