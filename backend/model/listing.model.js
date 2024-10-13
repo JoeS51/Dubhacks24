@@ -4,6 +4,8 @@ const listingSchema = new mongoose.Schema({
   parentUsername: {
     type: String,
     required: true
+ fault value for parentUsername
+
   },
   position: {
     type: {
@@ -48,11 +50,13 @@ const listingSchema = new mongoose.Schema({
   },
   rating: {
     type: Number, // Use Number type for price
-    required: false
+    required: false,
+    default: 0 // Default rating
   },
   numRatings: {
     type: Number, // Use Number type for price
-    required: false
+    required: false,
+    default: 0 // Default number of ratings
   },
   title: {
     type: String, // Use Number type for price
@@ -65,16 +69,19 @@ const listingSchema = new mongoose.Schema({
   type: {
     type: String,
     enum: ['Gated', 'Apartment', 'Garage', 'Driveway', 'Curbside'],
-    required: false
+    required: false,
+    default: "Gated" // Default value for type
   },
   size: {
     type: String,
     enum: ['SUV', 'Sedan', 'Minivan', 'Compact', 'Truck'],
-    required: false
+    required: false,
+    default: "SUV" // Default value for size
   },
   description: {
     type: String,
-    required: false
+    required: false,
+    default: "No description provided" // Default value for description
   }
 }, { _id: true }); // MongoDB generates _id automatically, but you can define it explicitly
 

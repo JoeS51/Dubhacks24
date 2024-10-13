@@ -22,7 +22,7 @@ const TopBarNoSearch = () => {
       <CalendarBarNoSearch/>
       <div className={styles.userOptions}>
       <Link href="/sellparking">
-      <span style={{ color: 'black' }}>SpotLite your Garage</span>
+      <span style={{ color: 'black' }}>Share your SpotLite</span>
         </Link>
         
 

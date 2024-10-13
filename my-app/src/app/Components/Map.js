@@ -23,14 +23,21 @@ export default function GoogleMapComponent() {
   const initialPos = { lat: 47.65, lng: -122.3 };
   const [center, setCenter] = useState(initialPos);
   const [listings, setListings] = useState([]);
+  const [positions, setPositions] = useState([]);
 
   useEffect(() => {
     // Function to fetch data
     const fetchListings = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/listings/get');
+        const response = await axios.get('http://localhost:4000/api/listings/markers');
         console.log('API Response:', response.data); // Log the JSON data to console
         setListings(response.data); // Optionally, store data in state
+        const extractedPositions = response.data.map((listing) => ({
+          lat: listing.lat,
+          lng: listing.lng,
+          id: listing.id
+        }));
+        setPositions(extractedPositions);
       } catch (error) {
         console.error('Error fetching listings:', error);
       }
@@ -80,8 +87,8 @@ export default function GoogleMapComponent() {
     }
   };
 
-  const handleMarkerClick = () => {
-    router.push('/spots'); // Navigate to /spots when a marker is clicked
+  const handleMarkerClick = (id) => {
+    router.push(`/spots?id=${id}`);
   };
 
   if (!isLoaded) return <div>Loading...</div>;
@@ -90,17 +97,17 @@ export default function GoogleMapComponent() {
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMap
         center={center}
-        zoom={13}
+        zoom={15}
         onDragEnd={onMapDrag}
         mapContainerStyle={{ height: '100%', width: '100%' }}
         options={{ disableDefaultUI: true }}
       >
         {/* Render multiple markers */}
-        {locations.map((position, index) => (
+        {positions.map((position, index) => (
           <Marker 
             key={index} 
-            position={position} 
-            onClick={handleMarkerClick} // Handle marker click to navigate
+            position={{lat: position.lat, lng: position.lng}} 
+            onClick={() => handleMarkerClick(position.id)} // Handle marker click to navigate
           />
         ))}
       </GoogleMap>
