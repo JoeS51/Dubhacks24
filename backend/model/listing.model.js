@@ -46,6 +46,22 @@ const listingSchema = new mongoose.Schema({
     type: Number, // Use Number type for price
     required: true
   },
+  rating: {
+    type: Number, // Use Number type for price
+    required: true
+  },
+  numRatings: {
+    type: Number, // Use Number type for price
+    required: true
+  },
+  title: {
+    type: String, // Use Number type for price
+    required: true
+  },
+  occupied: {
+    type: Boolean,
+    required: true
+  },
   description: {
     type: String,
     required: true
