@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(4000, () => {
-    console.log('Serving is running on port 3000')
+    console.log('Serving is running on port 4000')
 })
 
 app.use("/api/listings", listingRoute);
