@@ -4,7 +4,6 @@ const listingSchema = new mongoose.Schema({
   parentUsername: {
     type: String,
     required: true
- fault value for parentUsername
 
   },
   position: {
