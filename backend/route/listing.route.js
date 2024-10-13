@@ -82,7 +82,7 @@ router.get('/filter', async (req, res) => {
 
         const filter = {};
 
-        if (id) filter.id = id;
+        if (id) filter._id = id;
         if (start) filter.start = { $gte: new Date(start) }; // Start date filter
         if (end) filter.end = { $lte: new Date(end) }; // End date filter
         if (lat && lng) {
