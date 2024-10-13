@@ -341,7 +341,7 @@ async function checkAvailability(startDate, endDate) {
 
 
 async function geocodeAddress(address) {
-    const apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
+    const apiKey = 'AIzaSyCkuzW1WbWBbDGhQsT5aIKR2q4ww1RnFKQ';
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
     try {
