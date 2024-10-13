@@ -1,0 +1,45 @@
+.gallery {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space out items */
+  align-items: flex-start; /* Align items at the top */
+  margin: 0 auto; /* Center the gallery */
+  max-width: 1200px; /* Set a max width for the gallery */
+  padding-top: 10px;
+}
+
+.mainImageContainer {
+  position: relative;
+  width: 50%; /* Take up half of the width */
+  padding-bottom: 50%; /* Maintain aspect ratio (1:1) */
+  overflow: hidden; /* Hide any overflow */
+  margin-right: 10px; /* Add spacing to the right of the main image */
+}
+
+.showAllButton {
+  position: absolute; /* Position the button absolutely */
+  bottom: 10px; /* Position from the bottom */
+  right: 10px; /* Position from the right */
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); Optional shadow */
+  z-index: 10; /* Ensure the button is above the image */
+}
+
+.thumbnails {
+  display: grid; /* Use grid layout for thumbnails */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 10px; /* Space between thumbnails */
+  width: 50%; /* Take up the remaining half */
+  height: 50%;
+}
+
+.thumbnail {
+  position: relative; /* Allow absolute positioning if needed */
+  width: 100%; /* Ensure thumbnail takes full width */
+  overflow: hidden; /* Hide any overflow */
+}
