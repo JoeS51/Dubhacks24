@@ -1,12 +1,11 @@
 .map {
   width: 45%;
-  background-color: #f3f4f6;
+  background-color: white;
   padding: 1rem;
 }
 
 .mapContent {
   height: 100%;
-  background-color: white;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;

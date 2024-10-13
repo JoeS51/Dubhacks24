@@ -1,6 +1,7 @@
 .container {
   padding: 20px;
   overflow-x: auto; /* Allows horizontal scrolling */
+  background-color: #F7F7F7;
 }
 
 .grid-container {
