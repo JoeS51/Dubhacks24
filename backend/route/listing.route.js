@@ -59,6 +59,38 @@ router.get('/nearby', async (req, res) => {
     }
 });
 
+router.get('/markers', async (req, res) => {
+    try {
+        // Fetch all listings from the database
+        const listings = await Listing.find({}, '_id position');
+
+        // Map through the listings to extract the required fields
+        const result = listings.map(listing => {
+            const { _id, position } = listing;
+
+            // Ensure the position is defined and has coordinates
+            if (position && position.type === 'Point' && position.coordinates.length === 2) {
+                const [lng, lat] = position.coordinates; // Destructure the coordinates
+                return {
+                    id: _id,
+                    lat: lat,
+                    lng: lng
+                };
+            }
+
+            // Return null if position is not valid
+            return null;
+        }).filter(item => item !== null); // Filter out any null entries
+
+        // Send the result as JSON
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("Error fetching coordinates:", error);
+        res.status(500).json({ message: 'Error fetching coordinates', error: error.message });
+    }
+
+});
+
 router.get('/filter', async (req, res) => {
     try {
         const {
@@ -82,7 +114,7 @@ router.get('/filter', async (req, res) => {
 
         const filter = {};
 
-        if (id) filter.id = id;
+        if (id) filter._id = id;
         if (start) filter.start = { $gte: new Date(start) }; // Start date filter
         if (end) filter.end = { $lte: new Date(end) }; // End date filter
         if (lat && lng) {
