@@ -19,3 +19,8 @@
   width: 100%;
   max-width: 300px; /* Max card width */
 }
+
+.parking-card:hover {
+  transform: scale(1.1); /* Grow the card on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+}
