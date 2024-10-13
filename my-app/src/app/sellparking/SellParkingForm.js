@@ -53,28 +53,26 @@ function SellParkingForm() {
       title: "n/a",
       description: formData.description,
       address: formData.address,
-      occupied: "yes",
+      occupied: "no",
     };
-
-    // const newListing = formData;
 
     try {
       await axios.post('http://localhost:4000/api/listings/add', {
-        body: newListing,
-        headers: {
-          'Content-Type': 'application/json',
-      }
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(newListing)
-        console.log(error);
-      });
-    } catch (error) {
-      console.error("Error submitting listing", error);
+      body: newListing,
+      headers: {
+        'Content-Type': 'application/json',
     }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(newListing)
+      console.log(error);
+    });
+  } catch (error) {
+    console.error("Error submitting listing", error);
+  }
   };
 
   return (
