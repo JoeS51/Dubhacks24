@@ -6,9 +6,9 @@ import TopBarClean from "../Components/TopBarClean";
 
 // Sample data for profile and reserved parking spaces
 const userProfile = {
-  name: "Heon Jwa",
+  name: "Trien Vuong",
   profilePicture: "/images/profile.jpg",
-  email: "john.doe@example.com",
+  email: "trienvuong@gmail.com",
   phoneNumber: "(123) 456-7890",
 };
 
@@ -29,6 +29,16 @@ const reservedParkingSpaces = [
   },
   // Add more reservations if needed
 ];
+const myParkingSpaces = [
+    {
+      id: 1,
+      location: "Bellevue, WA",
+      dates: "Oct 14 - Oct 20",
+      price: 5,
+      image: parkingSpot1, // Pass the image directly, not as an object
+    },
+    // Add more reservations if needed
+  ];
 
 const ProfilePage = () => {
   return (
@@ -51,9 +61,36 @@ const ProfilePage = () => {
 
         {/* Reserved Parking Spaces */}
         <div className="w-full max-w-4xl mt-8">
-          <h3 className="text-xl font-bold mb-4">Reserved Parking Spaces</h3>
+          <h3 className="text-xl font-bold mb-4">Reserved Parking Spots</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {reservedParkingSpaces.map((space) => (
+              <div
+                key={space.id}
+                className="bg-white p-4 rounded-lg shadow-md flex items-center"
+              >
+                <div className="w-1/3">
+                  <Image
+                    src={space.image} // Access the image directly
+                    alt={space.location}
+                    width={150}
+                    height={100}
+                    className="rounded"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className="w-2/3 pl-4">
+                  <h4 className="text-lg font-semibold">{space.location}</h4>
+                  <p className="text-gray-600">{space.dates}</p>
+                  <p className="text-gray-800">${space.price} / total</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-full max-w-4xl mt-8">
+          <h3 className="text-xl font-bold mb-4">My Parking Spots</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {myParkingSpaces.map((space) => (
               <div
                 key={space.id}
                 className="bg-white p-4 rounded-lg shadow-md flex items-center"
