@@ -4,6 +4,12 @@ import parkingSpot1 from '../Images/parkingspot.jpg'
 import '../Styles/ParkingGrid.css'
 import axios from 'axios';
 import Park from '../../../public/Park';
+import park1 from '../Images/park1.jpg'
+import park2 from '../Images/park2.jpg'
+import park3 from '../Images/park3.jpg'
+import park9 from '../Images/park9.jpg'
+
+const images = [parkingSpot1, park9, park1, park2, park3];
 
 const ParkingGrid = () => {
 
@@ -40,10 +46,10 @@ const ParkingGrid = () => {
   return (
     <div className="container">
       <div className="grid-container">
-        {listings.map((listing) => (
+        {listings.map((listing, index) => (
 
           <ParkingCard
-            image={parkingSpot1}
+            image={images[index % images.length]}
             title={listing.title}
             location={listing.address.city + ", " + listing.address.state}
             rating={listing.rating}
@@ -51,6 +57,7 @@ const ParkingGrid = () => {
             priceNow={listing.price}
             dates={`Now - ${formatDate(listing.end)}`}
             key={listing._id}
+            id={listing._id}
           />
 
         ))}
