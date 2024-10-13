@@ -17,6 +17,7 @@ import TopBarClean from '../Components/TopBarClean';
 const SpotsPage = () => {
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
+  const i = searchParams.get('i')
 
   const [info, setInfo] = useState();
 
@@ -41,13 +42,13 @@ const SpotsPage = () => {
       <TopBarClean/>
       <div className="overflow-auto h-screen"> {/* Set a height for scrollable area */}
         <div className="mx-10">
-        <h1 className="text-3xl font-bold mt-6 mb-4">Seattle Parking</h1>
+        <h1 className="text-3xl font-bold mt-6 mb-4">{info?.title}</h1>
         <div className="flex justify-between items-center mb-4">
           <div>
             <span className="font-semibold">Parking in {info?.address.city}, {info?.address.state}</span>
           </div>
         </div>
-        <ImageGallery />
+        <ImageGallery i={i} />
         <div className="flex mt-8">
           <div className="w-2/3 pr-8">
             <ListingInfo />

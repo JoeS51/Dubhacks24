@@ -3,10 +3,10 @@ import Image from 'next/image';
 import '../Styles/ParkingCard.css';
 import Link from 'next/link';
 
-const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dates, location, id }) => {
+const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dates, location, id, i }) => {
   return (
     <div className="parking-card">
-      <Link href={{ pathname: '/spots', query: { id } }} passHref>
+      <Link href={{ pathname: '/spots', query: { id, i } }} passHref>
         <div className="card-image">
           <Image src={image} alt={title} priority />
         </div>
