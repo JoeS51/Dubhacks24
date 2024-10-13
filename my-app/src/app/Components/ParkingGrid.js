@@ -58,15 +58,16 @@ const ParkingGrid = () => {
       const filtered = listings.filter((listing) => {
         return filters.every((filter) => {
           // Get the description and handle undefined/null cases
-          const description = listing.description ? listing.description.toLowerCase() : '';
+          const size = listing.size ? listing.size.toLowerCase() : '';
+          const type = listing.size ? listing.type.toLowerCase() : '';
   
           // Example logic: match vehicle types or other conditions
-          if (filter === 'SUV') return description.includes('suv');
-          if (filter === 'Sedan') return description.includes('sedan');
-          if (filter === 'Minivan') return description.includes('minivan');
-          if (filter === 'Gated') return description.includes('gated');
-          if (filter === 'Curbside') return description.includes('curbside');
-          if (filter === 'Garage') return description.includes('garage');
+          if (filter === 'SUV') return size.includes('suv');
+          if (filter === 'Sedan') return size.includes('sedan');
+          if (filter === 'Minivan') return size.includes('minivan');
+          if (filter === 'Gated') return type.includes('gated');
+          if (filter === 'Curbside') return type.includes('curbside');
+          if (filter === 'Garage') return type.includes('garage');
           
           return false; // Default false for filters that don't match
         });
