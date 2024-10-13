@@ -3,68 +3,68 @@ import mongoose from 'mongoose';
 const listingSchema = new mongoose.Schema({
   parentUsername: {
     type: String,
-    required: true
+    required: false
   },
   position: {
     type: {
       type: String, 
       enum: ['Point'], 
-      required: true
+      required: false
     },
     coordinates: {
       type: [Number], // Array of numbers representing longitude and latitude
-      required: true
+      required: false
     }
   },
   address: {
     city: {
       type: String,
-      required: true
+      required: false
     },
     state: {
       type: String,
-      required: true
+      required: false
     },
     zipcode: {
       type: String,
-      required: true
+      required: false
     },
     street: {
       type: String,
-      required: true
+      required: false
     }
   },
   start: {
     type: Date, // Use Date type for timestamps
-    required: true
+    required: false
   },
   end: {
     type: Date, // Use Date type for timestamps
-    required: true
+    required: false
   },
   price: {
     type: Number, // Use Number type for price
-    required: true
+    required: false
   },
   rating: {
     type: Number, // Use Number type for price
-    required: true
+    required: false
   },
   numRatings: {
     type: Number, // Use Number type for price
-    required: true
+    required: false
   },
   title: {
     type: String, // Use Number type for price
-    required: true
+    required: false
   },
   occupied: {
     type: Boolean,
-    required: true
+    required: false
   },
   description: {
     type: String,
-    required: true
+    required: false
   }
 }, { _id: true }); // MongoDB generates _id automatically, but you can define it explicitly
 
