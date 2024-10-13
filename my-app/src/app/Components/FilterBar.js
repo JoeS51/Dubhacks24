@@ -7,6 +7,7 @@ const filtersData = [
   { name: 'Gated'},
   { name: 'Curbside'},
   { name: 'Garage'},
+  { name: 'Lot'},
 ];
 
 const FilterBar = ({ onFilterChange }) => {
