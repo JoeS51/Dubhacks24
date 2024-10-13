@@ -77,7 +77,7 @@ const CalendarBar = () => {
         </form>
         <button
           type="submit"
-          className="bg-red-500 text-white p-4 rounded-full hover:bg-red-600 focus:outline-none ml-4" // Added margin-left for spacing
+          className="bg-customBlue text-white p-4 rounded-full hover:bg-customBlueHover focus:outline-none ml-4" // Added margin-left for spacing
         >
           Search
         </button>
