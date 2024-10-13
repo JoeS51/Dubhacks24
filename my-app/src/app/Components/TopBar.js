@@ -2,6 +2,8 @@ import React from 'react';
 import styles from '../Styles/TopBar.module.css';
 import CalendarBar from './CalendarBar';
 import Link from 'next/link';
+import trien from '../Images/trien_vuong.jpg'
+import Image from 'next/image';
 
 const TopBar = () => {
   return (
@@ -9,12 +11,14 @@ const TopBar = () => {
       <Link href="/JayPark" passHref>
         <div className={styles.logo}>SpotLite</div>
       </Link>
-      <CalendarBar/>
+      <div className={styles.navItems}>
+        <CalendarBar/>
+      </div>
       <div className={styles.userOptions}>
         <span style={{ color: 'black' }}>SpotLite your Garage</span>
-
         <span>🌐</span>
-        <div className={styles.userIcon}>👤</div>
+        <Image src={trien} width="40" height="40" className='rounded-full mr-4'/>
+
       </div>
     </div>
   );

@@ -19,10 +19,10 @@ const SpotsPage = () => {
           <div>
             <span className="font-semibold">Parking in Seattle, Washington</span>
           </div>
-          <div>
+          {/* <div>
             <button className="mr-4">Share</button>
             <button>Save</button>
-          </div>
+          </div> */}
         </div>
         <ImageGallery />
         <div className="flex mt-8">
