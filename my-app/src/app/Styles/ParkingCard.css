@@ -1,6 +1,7 @@
 /* components/ParkingCard.css */
 .parking-card {
   width: 100%;
+  background-color: white;
   max-width: 300px;
   border-radius: 15px;
   overflow: hidden;
@@ -20,6 +21,7 @@
 }
 
 .card-info h3 {
+  color: #333;
   font-size: 1.2rem;
   margin: 0;
 }
@@ -31,6 +33,7 @@
 
 .rating {
   margin: 10px 0;
+  color: #333;
   font-size: 1rem;
 }
 
@@ -47,6 +50,6 @@
 }
 
 .new-price {
-  color: #d32f2f;
+  color: #bf4949;
   font-weight: bold;
 }

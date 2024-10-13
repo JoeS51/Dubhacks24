@@ -8,7 +8,8 @@ const TopBar = () => {
       <div className={styles.logo}>SpotLite</div>
       <CalendarBar/>
       <div className={styles.userOptions}>
-        <span>SpotLite your Garage</span>
+        <span style={{ color: 'black' }}>SpotLite your Garage</span>
+
         <span>🌐</span>
         <div className={styles.userIcon}>👤</div>
       </div>
