@@ -42,7 +42,7 @@ const SpotsPage = () => {
         <h1 className="text-3xl font-bold mt-6 mb-4">Seattle Parking</h1>
         <div className="flex justify-between items-center mb-4">
           <div>
-            <span className="font-semibold">Parking in {info.address.city}, {info.address.state}</span>
+            <span className="font-semibold">Parking in {info?.address.city}, {info?.address.state}</span>
           </div>
           {/* <div>
             <button className="mr-4">Share</button>
@@ -55,10 +55,10 @@ const SpotsPage = () => {
             <ListingInfo />
             <HostInfo />
             <Amenities />
-            <AboutPlace description={info.description} />
+            <AboutPlace description={info?.description} />
           </div>
           <div className="w-1/3">
-            <BookingWidget />
+            <BookingWidget rate={info?.price}/>
           </div>
         </div>
         </div>
