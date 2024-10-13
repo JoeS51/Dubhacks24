@@ -4,8 +4,15 @@ import Listing from '../model/listing.model.js';
 const router = express.Router();
 
 router.get('/get', async (req, res) => {
-    res.send("Hello");
-})
+    try {
+        const listings = await Listing.find(); // Fetch all listings from the database
+        res.status(200).send(listings); // Send the listings as the response
+    } catch (error) {
+        console.error("Error fetching listings:", error);
+        res.status(500).send({ message: 'Error fetching listings', error: error.message });
+    }
+});
+    
 
 router.post('/add', async (req, res) => {
     try {
