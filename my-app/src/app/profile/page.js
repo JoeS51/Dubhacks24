@@ -18,14 +18,14 @@ const reservedParkingSpaces = [
     location: "Seattle, WA",
     dates: "Oct 14 - Oct 20",
     price: 120,
-    image: { parkingSpot1 },
+    image: parkingSpot1, // Pass the image directly, not as an object
   },
   {
     id: 2,
     location: "San Francisco, CA",
     dates: "Nov 2 - Nov 5",
     price: 90,
-    image: { parkingSpot1 },
+    image: parkingSpot1, // Pass the image directly
   },
   // Add more reservations if needed
 ];
@@ -60,7 +60,7 @@ const ProfilePage = () => {
               >
                 <div className="w-1/3">
                   <Image
-                    src={space.image}
+                    src={space.image} // Access the image directly
                     alt={space.location}
                     width={150}
                     height={100}
