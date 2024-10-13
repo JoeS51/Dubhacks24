@@ -1,5 +1,6 @@
 .container {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   overflow-x: auto; /* Allows horizontal scrolling */
   background-color: #F7F7F7;
 }
@@ -10,7 +11,7 @@
     auto-fill,
     minmax(300px, 1fr)
   ); /* Responsive grid */
-  gap: 20px; /* Space between cards */
+  gap: 8px;
   justify-items: center; /* Center the cards */
   align-items: stretch; /* Stretch cards to fill the grid cell */
 }
@@ -21,6 +22,6 @@
 }
 
 .parking-card:hover {
-  transform: scale(1.1); /* Grow the card on hover */
+  transform: scale(1.02); /* Grow the card on hover */
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
 }

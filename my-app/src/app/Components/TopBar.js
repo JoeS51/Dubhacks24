@@ -23,7 +23,7 @@ const TopBar = () => {
       </div>
       <div className={styles.userOptions}>
       <Link href="/sellparking">
-         <span style={{ color: 'black' }}>SpotLite your Garage</span>
+         <span style={{ color: 'black' }}>Share your SpotLite</span>
         </Link>
         <span>🌐</span>
         <Link href="/profile" passHref>
