@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import '../Styles/ParkingCard.css'
+import '../Styles/ParkingCard.css';
 
 const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dates, location }) => {
   return (
     <div className="parking-card">
       <div className="card-image">
-        <Image src={image} alt={title} priority/>
+        <Image src={image} alt={title} priority />
       </div>
       <div className="card-info">
         <h3>{title}</h3>
@@ -18,8 +18,12 @@ const ParkingCard = ({ image, title, rating, reviews, priceBefore, priceNow, dat
           <span>{dates}</span>
         </div>
         <div className="price">
-          <span className="old-price">${priceBefore}</span>
-          <span className="new-price">${priceNow} / hour</span>
+          {priceBefore && (
+            <span className="old-price">${priceBefore}</span>
+          )}
+          {priceNow && (
+            <span className="new-price">${priceNow} / hour</span>
+          )}
         </div>
       </div>
     </div>
