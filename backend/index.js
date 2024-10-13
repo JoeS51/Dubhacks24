@@ -98,11 +98,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-async function sendWriteListing(jsonObject) {
-  writeListing(jsonObject.id, jsonObject.parentUsername, jsonObject.lat, jsonObject.long, jsonObject.start, jsonObject.end, jsonObject.price, jsonObject.description,
-    jsonObject.address.city, jsonObject.address.state, jsonObject.address.street, jsonObject.address.zipcode);
-    console.log("getData")
-}
 
 // async function writeListing(id, username, lat, long, start, end, price, desc, city, state, street, zipcode) {
 //   try {
@@ -346,7 +341,7 @@ async function checkAvailability(startDate, endDate) {
 
 
 async function geocodeAddress(address) {
-    const apiKey = 'AIzaSyCkuzW1WbWBbDGhQsT5aIKR2q4ww1RnFKQ';
+    const apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
     try {
