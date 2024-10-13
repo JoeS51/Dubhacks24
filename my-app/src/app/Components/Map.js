@@ -97,7 +97,7 @@ export default function GoogleMapComponent() {
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMap
         center={center}
-        zoom={13}
+        zoom={15}
         onDragEnd={onMapDrag}
         mapContainerStyle={{ height: '100%', width: '100%' }}
         options={{ disableDefaultUI: true }}
