@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../Styles/TopBar.module.css';
 import CalendarBar from './CalendarBar';
 import Link from 'next/link';
+import ListingButton from './listingButton';
 
 const TopBar = () => {
   return (
@@ -11,7 +12,11 @@ const TopBar = () => {
       </Link>
       <CalendarBar/>
       <div className={styles.userOptions}>
-        <span style={{ color: 'black' }}>SpotLite your Garage</span>
+        {/* <span style={{ color: 'black' }}>SpotLite your Garage</span> */}
+        <span>
+          <ListingButton></ListingButton>
+
+        </span>
 
         <span>🌐</span>
         <div className={styles.userIcon}>👤</div>
