@@ -3,12 +3,11 @@
 import React, { useState } from "react";
 import { format, parseISO } from "date-fns";
 // components/BookingWidget.js
-const BookingWidget = () => {
+const BookingWidget = ({rate}) => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [estimatedPrice, setEstimatedPrice] = useState(null); // State to hold the estimated price
-
-  const hourlyRate = 3; // Price per hour
+  const hourlyRate = rate; // Price per hour
 
   const isButtonDisabled = () => {
     return checkIn === "" || checkOut === "";
@@ -70,7 +69,7 @@ const BookingWidget = () => {
 
   return (
     <div className="border rounded-xl p-6 shadow-lg">
-      <div className="text-xl">$3 / hr</div>
+      <div className="text-xl">${hourlyRate} / hr</div>
       <div className="py-2">
         <input
           type="text"
