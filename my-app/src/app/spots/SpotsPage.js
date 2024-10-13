@@ -13,6 +13,7 @@ import { useSearchParams } from 'next/navigation'
 import axios from 'axios';
 import TopBarClean from '../Components/TopBarClean';
 
+
 const SpotsPage = () => {
   const searchParams = useSearchParams()
   const id = searchParams.get('id')
