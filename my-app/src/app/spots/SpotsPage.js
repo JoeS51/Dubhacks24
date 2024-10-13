@@ -46,10 +46,6 @@ const SpotsPage = () => {
           <div>
             <span className="font-semibold">Parking in {info?.address.city}, {info?.address.state}</span>
           </div>
-          {/* <div>
-            <button className="mr-4">Share</button>
-            <button>Save</button>
-          </div> */}
         </div>
         <ImageGallery />
         <div className="flex mt-8">
