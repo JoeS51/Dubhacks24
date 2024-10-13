@@ -4,12 +4,19 @@ import CalendarBar from './CalendarBar';
 import Link from 'next/link';
 import trien from '../Images/trien_vuong.jpg'
 import Image from 'next/image';
+import icon from '../Images/icon.png'
 
 const TopBar = () => {
   return (
     <div className={styles.topBar}>
       <Link href="/JayPark" passHref>
-        <div className={styles.logo}>SpotLite</div>
+        <div className={styles.logo}>
+        <Image
+            src={icon}
+            width={40}
+            height={40}
+        />
+          SpotLite</div>
       </Link>
       <div className={styles.navItems}>
         <CalendarBar/>

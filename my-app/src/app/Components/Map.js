@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import { useSelector } from 'react-redux';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 
@@ -16,6 +17,7 @@ const locations = [
 ];
 
 export default function GoogleMapComponent() {
+  const router = useRouter(); // Use router to programmatically navigate
   const destination = useSelector((state) => state.map.destination);
   const initialPos = { lat: 47.65, lng: -122.3 };
   const [center, setCenter] = useState(initialPos);
@@ -53,13 +55,16 @@ export default function GoogleMapComponent() {
   };
 
   const onMapDrag = (e) => {
-    // Check if e and e.latLng are defined before accessing toJSON
     if (e && e.latLng) {
-      const newCenter = e.latLng.toJSON(); // Safely get new center
+      const newCenter = e.latLng.toJSON();
       setCenter(newCenter);
     } else {
       console.warn('Drag event does not contain latLng.');
     }
+  };
+
+  const handleMarkerClick = () => {
+    router.push('/spots'); // Navigate to /spots when a marker is clicked
   };
 
   if (!isLoaded) return <div>Loading...</div>;
@@ -68,16 +73,18 @@ export default function GoogleMapComponent() {
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMap
         center={center}
-        zoom={13} // Zoom out to show all markers
+        zoom={13}
         onDragEnd={onMapDrag}
         mapContainerStyle={{ height: '100%', width: '100%' }}
         options={{ disableDefaultUI: true }}
       >
-        {/* Render the center marker */}
-
         {/* Render multiple markers */}
         {locations.map((position, index) => (
-          <Marker key={index} position={position} />
+          <Marker 
+            key={index} 
+            position={position} 
+            onClick={handleMarkerClick} // Handle marker click to navigate
+          />
         ))}
       </GoogleMap>
     </div>
