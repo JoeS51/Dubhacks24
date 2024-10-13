@@ -62,6 +62,16 @@ const listingSchema = new mongoose.Schema({
     type: Boolean,
     required: false
   },
+  type: {
+    type: String,
+    enum: ['Gated', 'Apartment', 'Garage', 'Driveway', 'Curbside'],
+    required: false
+  },
+  size: {
+    type: String,
+    enum: ['SUV', 'Sedan', 'Minivan', 'Compact', 'Truck'],
+    required: false
+  },
   description: {
     type: String,
     required: false

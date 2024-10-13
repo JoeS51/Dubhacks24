@@ -60,6 +60,52 @@ router.get('/nearby', async (req, res) => {
     }
 });
 
+router.get('/filter', async (req, res) => {
+    try {
+      const {
+        start,
+        end,
+        lat,
+        lng,
+        maxDistance = 1000000,
+        size,
+        type,
+        minPrice,
+        maxPrice,
+        numRatings
+      } = req.query;
+  
+      const filter = {};
+  
+      if (start) filter.start = { $gte: new Date(start) }; // Start date filter
+      if (end) filter.end = { $lte: new Date(end) }; // End date filter
+      if (lat && lng) {
+        filter.position = {
+          $near: {
+            $geometry: {
+              type: "Point",
+              coordinates: [parseFloat(lng), parseFloat(lat)]
+            },
+            $maxDistance: parseInt(maxDistance)
+          }
+        };
+      }
+      if (size) filter.size = size; // Size filter
+      if (type) filter.type = type; // Type filter
+      if (minPrice) filter.price = { $gte: parseFloat(minPrice) }; // Minimum price filter
+      if (maxPrice) filter.price = { $lte: parseFloat(maxPrice) }; // Maximum price filter
+      if (numRatings) filter.numRatings = { $gte: parseInt(numRatings) }; // Minimum number of ratings filter
+  
+      const listings = await Listing.find(filter);
+  
+      res.status(200).json(listings);
+    } catch (error) {
+      console.error("Error fetching filtered listings:", error);
+      res.status(500).json({ message: 'Error fetching filtered listings', error: error.message });
+    }
+  });
+  
+
 
 router.get('/get', async (req, res) => {
     try {
@@ -74,7 +120,7 @@ router.get('/get', async (req, res) => {
 
 router.post('/add', async (req, res) => {
     try {
-        const { parentUsername, position, address, start, end, price, rating, numRatings, title, occupied, description } = req.body;
+        const { parentUsername, position, address, start, end, price, rating, numRatings, title, occupied, type, size, description } = req.body;
 
         // Create a new listing
         const newListing = new Listing({
@@ -88,6 +134,8 @@ router.post('/add', async (req, res) => {
             numRatings,
             title,
             occupied,
+            type,
+            size,
             description
         });
 
