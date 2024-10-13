@@ -15,7 +15,7 @@ const ParkingGrid = () => {
           reviews={72}
           priceBefore={116}
           priceNow={3}
-          dates="Now - Oct 17"
+          dates="Now - 5 hours"
         />
         <ParkingCard
           image={parkingSpot1}
@@ -25,7 +25,7 @@ const ParkingGrid = () => {
           reviews={534}
           priceBefore={162}
           priceNow={4}
-          dates="Now - 18"
+          dates="Now - Oct 18"
         />
         <ParkingCard
           image={parkingSpot1}
