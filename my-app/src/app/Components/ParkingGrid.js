@@ -68,6 +68,7 @@ const ParkingGrid = () => {
           if (filter === 'Gated') return type.includes('gated');
           if (filter === 'Curbside') return type.includes('curbside');
           if (filter === 'Garage') return type.includes('garage');
+          if (filter === 'Lot') return type.includes('lot');
           
           return false; // Default false for filters that don't match
         });
