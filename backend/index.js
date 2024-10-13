@@ -98,6 +98,11 @@ async function run() {
 }
 run().catch(console.dir);
 
+async function sendWriteListing(jsonObject) {
+  writeListing(jsonObject.id, jsonObject.parentUsername, jsonObject.lat, jsonObject.long, jsonObject.start, jsonObject.end, jsonObject.price, jsonObject.description,
+    jsonObject.address.city, jsonObject.address.state, jsonObject.address.street, jsonObject.address.zipcode);
+    console.log("getData")
+}
 
 // async function writeListing(id, username, lat, long, start, end, price, desc, city, state, street, zipcode) {
 //   try {
