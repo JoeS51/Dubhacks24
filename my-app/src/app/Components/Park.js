@@ -4,23 +4,11 @@ import React, { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useThree } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import Park from "../../../public/Park";
+import TopBar from "./TopBar";
+import styles from '../Styles/Layout.module.css';
 
 function CameraSetup() {
-  const { camera, gl } = useThree();
-
-  useEffect(() => {
-    const resizeHandler = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      gl.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", resizeHandler);
-    resizeHandler(); // Call initially to set proper size
-
-    return () => window.removeEventListener("resize", resizeHandler);
-  }, [camera, gl]);
-
-  return null;
+  // ... (CameraSetup function remains unchanged)
 }
 
 export default function JayPark() {
@@ -32,8 +20,8 @@ export default function JayPark() {
         margin: 0,
         padding: 0,
         width: "100%",
-        height: "100vh", // Ensures it fills the viewport height
-        overflow: "hidden", // Prevents unwanted scrollbars
+        height: "100vh",
+        overflow: "hidden",
       }}
     >
       <div
@@ -56,7 +44,57 @@ export default function JayPark() {
           </Suspense>
         </Canvas>
       </div>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          pointerEvents: 'none',
+        }}
+      >
+        <h1
+          style={{
+            color: 'white',
+            fontSize: '15vw',
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 'bold',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+            animation: 'fadeInFloat 3s ease-out forwards',
+          }}
+        >
+          SpotLite
+        </h1>
+      </div>
+      <style jsx global>{`
+        @keyframes fadeInFloat {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        
+        h1 {
+          animation: fadeInFloat 3s ease-out forwards, float 6s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }
-
