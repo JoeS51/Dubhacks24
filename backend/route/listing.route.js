@@ -61,49 +61,56 @@ router.get('/nearby', async (req, res) => {
 
 router.get('/filter', async (req, res) => {
     try {
-      const {
-        start,
-        end,
-        lat,
-        lng,
-        maxDistance = 1000000,
-        size,
-        type,
-        minPrice,
-        maxPrice,
-        numRatings
-      } = req.query;
-  
-      const filter = {};
-  
-      if (start) filter.start = { $gte: new Date(start) }; // Start date filter
-      if (end) filter.end = { $lte: new Date(end) }; // End date filter
-      if (lat && lng) {
-        filter.position = {
-          $near: {
-            $geometry: {
-              type: "Point",
-              coordinates: [parseFloat(lng), parseFloat(lat)]
-            },
-            $maxDistance: parseInt(maxDistance)
-          }
-        };
-      }
-      if (size) filter.size = size; // Size filter
-      if (type) filter.type = type; // Type filter
-      if (minPrice) filter.price = { $gte: parseFloat(minPrice) }; // Minimum price filter
-      if (maxPrice) filter.price = { $lte: parseFloat(maxPrice) }; // Maximum price filter
-      if (numRatings) filter.numRatings = { $gte: parseInt(numRatings) }; // Minimum number of ratings filter
-  
-      const listings = await Listing.find(filter);
-  
-      res.status(200).json(listings);
+        const {
+            id,
+            start,
+            end,
+            lat,
+            lng,
+            maxDistance = 1000000,
+            size,
+            type,
+            minPrice,
+            maxPrice,
+            numRatings
+        } = req.query;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            console.log('Invalid ObjectId format');
+            return res.status(400).json({ message: 'Invalid listing ID format' });
+        }
+
+        const filter = {};
+
+        if (id) filter.id = id;
+        if (start) filter.start = { $gte: new Date(start) }; // Start date filter
+        if (end) filter.end = { $lte: new Date(end) }; // End date filter
+        if (lat && lng) {
+            filter.position = {
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [parseFloat(lng), parseFloat(lat)]
+                    },
+                    $maxDistance: parseInt(maxDistance)
+                }
+            };
+        }
+        if (size) filter.size = size; // Size filter
+        if (type) filter.type = type; // Type filter
+        if (minPrice) filter.price = { $gte: parseFloat(minPrice) }; // Minimum price filter
+        if (maxPrice) filter.price = { $lte: parseFloat(maxPrice) }; // Maximum price filter
+        if (numRatings) filter.numRatings = { $gte: parseInt(numRatings) }; // Minimum number of ratings filter
+
+        const listings = await Listing.find(filter);
+
+        res.status(200).json(listings);
     } catch (error) {
-      console.error("Error fetching filtered listings:", error);
-      res.status(500).json({ message: 'Error fetching filtered listings', error: error.message });
+        console.error("Error fetching filtered listings:", error);
+        res.status(500).json({ message: 'Error fetching filtered listings', error: error.message });
     }
-  });
-  
+});
+
 
 
 router.get('/get', async (req, res) => {
@@ -201,17 +208,17 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
-  router.get('/read', async (req, res) => {
+router.get('/read', async (req, res) => {
     try {
-      Listing.find({}, (err, result) => {
-        // console.log(result);
-        res.body = result;
-        res.status(201).json({ message: "listings fetched successfully!", listing: result});
-    })
+        Listing.find({}, (err, result) => {
+            // console.log(result);
+            res.body = result;
+            res.status(201).json({ message: "listings fetched successfully!", listing: result });
+        })
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Internal Server Error", error: err.message }); // Include error message in response
+        console.error(err);
+        res.status(500).json({ message: "Internal Server Error", error: err.message }); // Include error message in response
     }
-  });
+});
 
 export default router;
