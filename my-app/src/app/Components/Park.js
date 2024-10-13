@@ -33,6 +33,12 @@ export default function JayPark() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (reviewRef.current) {
+      setRandomPositionAndRotation(); // Set initial position only when ref is ready
+    }
+  }, [reviewRef.current]);
+
   const setRandomPositionAndRotation = () => {
     if (!reviewRef.current) return;
 

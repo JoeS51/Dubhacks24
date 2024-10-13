@@ -88,7 +88,8 @@ export default function GoogleMapComponent() {
   };
 
   const handleMarkerClick = (id) => {
-    router.push(`/spots?id=${id}`);
+    const randomNumber = Math.floor(Math.random() * 5);
+    router.push(`/spots?id=${id}?i=${randomNumber}`);
   };
 
   if (!isLoaded) return <div>Loading...</div>;

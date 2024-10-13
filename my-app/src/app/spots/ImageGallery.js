@@ -7,9 +7,12 @@ import park3 from '../Images/park3.jpg'
 import park9 from '../Images/park9.jpg'
 
 const images = [parkingSpot1, park9, park1, park2, park3];
-
+const defaultI = Math.floor(Math.random() * 5);
 // components/ImageGallery.js
 const ImageGallery = ({i}) => {
+  if (i == null) {
+    i=defaultI
+  }
   const randomImage = images[i];
   return (
     <div className="overflow-x-auto whitespace-nowrap h-96">
