@@ -20,11 +20,3 @@ app.listen(3000, () => {
 })
 
 app.use("/api/listings", listingRoute);
-
-app.use("/test", (req, res) => {
-    res.send("Hello");
-})
-
-app.get('/', (req, res) =>  {
-    res.send("hello");
-});
