@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from '../Styles/TopBar.module.css';
-import SearchBar from '../Components/SearchBar';
+import CalendarBar from './CalendarBar';
 
 const TopBar = () => {
   return (
     <div className={styles.topBar}>
       <div className={styles.logo}>SpotLite</div>
+      <CalendarBar/>
       <div className={styles.userOptions}>
         <span>SpotLite your Garage</span>
         <span>🌐</span>
