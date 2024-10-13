@@ -5,19 +5,36 @@ const uri =
   "mongodb+srv://sheepca03:DQQVtnIZ8a7exjWT@cluster0.j6o91.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const client = new MongoClient(uri);
+const dbName = 'dubhacks24'
+let db, listingCollection, rentingCollection;
+
+
+async function readAllAsJson() {
+  try {
+    const [listings, rentals] = await Promise.all([
+      listingCollection.find({}).toArray(),
+      rentingCollection.find({}).toArray()
+    ]);
+    const result = { listings, rentals };
+    const json = JSON.stringify(result, null, 2);
+
+    console.log('All Documents as JSON:', json);
+
+    return json;  // Return the JSON string
+  } catch (err) {
+    console.error('Read operation failed:', err);
+    return null;
+  }
+}
 
 async function run() {
   try {
     await client.connect();
-
-    const database = client.db('sample_mflix');
-    const movies = database.collection('movies');
-
-    // Query for a movie that has the title 'Back to the Future'
-    const query = { title: 'Back to the Future' };
-    const movie = await movies.findOne(query);
-
-    console.log(movie);
+    console.log('Connected to MongoDB');
+    db = client.db(dbName)
+    listingCollection = db.collection('listingCollection');
+    rentingCollection = db.collection('rentingCollection');
+    await readAllAsJson()
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
@@ -25,6 +42,65 @@ async function run() {
 }
 run().catch(console.dir);
 
+
+async function writeListing(id, username, lat, long, start, end, price, desc, city, state, street, zipcode) {
+  try {
+    await client.connect();
+
+    const database = client.db('dubhacks24');
+    const collection = database.collection('listingDB');
+
+    collection.insert(
+      {
+        "_id": id,  
+        "parentUsername": username,  
+        "position": {          
+            "city": city,
+            "state": state,
+            "street": street,
+            "zipcode": zipcode,
+            "coordinates": [long, lat]  
+        },
+        "start": start, 
+        "end": end, 
+        "price": price,       
+        "description": desc
+      }
+    )
+  } finally {
+    await client.close();
+  }
+}
+
+async function writeBooking(id, username, renter, lat, long, start, end, price, desc, city, state, street, zipcode) {
+  try {
+    await client.connect();
+
+    const database = client.db('dubhacks24');
+    const collection = database.collection('rentDB');
+
+    collection.insert(
+      {
+        "_id": id,  
+        "parentUsername": username,
+        "renterUsername": renter,
+        "position": {          
+            "city": city,
+            "state": state,
+            "street": street,
+            "zipcode": zipcode,
+            "coordinates": [long, lat]  
+        },
+        "start": start, 
+        "end": end, 
+        "price": price,       
+        "description": desc
+      }
+    )
+  } finally {
+    await client.close();
+  }
+}
 
 // posted for rent
 /*
