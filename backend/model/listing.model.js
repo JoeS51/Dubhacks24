@@ -3,48 +3,48 @@ import mongoose from 'mongoose';
 const listingSchema = new mongoose.Schema({
   parentUsername: {
     type: String,
-    required: false
+    required: true
   },
   position: {
     type: {
       type: String, 
       enum: ['Point'], 
-      required: false
+      required: true
     },
     coordinates: {
       type: [Number], // Array of numbers representing longitude and latitude
-      required: false
+      required: true
     }
   },
   address: {
     city: {
       type: String,
-      required: false
+      required: true
     },
     state: {
       type: String,
-      required: false
+      required: true
     },
     zipcode: {
       type: String,
-      required: false
+      required: true
     },
     street: {
       type: String,
-      required: false
+      required: true
     }
   },
   start: {
     type: Date, // Use Date type for timestamps
-    required: false
+    required: true
   },
   end: {
     type: Date, // Use Date type for timestamps
-    required: false
+    required: true
   },
   price: {
     type: Number, // Use Number type for price
-    required: false
+    required: true
   },
   rating: {
     type: Number, // Use Number type for price
@@ -56,11 +56,11 @@ const listingSchema = new mongoose.Schema({
   },
   title: {
     type: String, // Use Number type for price
-    required: false
+    required: true
   },
   occupied: {
     type: Boolean,
-    required: false
+    required: true
   },
   type: {
     type: String,

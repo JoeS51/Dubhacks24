@@ -15,7 +15,9 @@ function SellParkingForm() {
       state: "",
       zipcode: "",
       street: ""
-    }
+    },
+    type: "",
+    size: "",
   });
 
   const printForm = () => {
@@ -209,7 +211,44 @@ function SellParkingForm() {
             required
           />
         </div>
-
+        <div>
+          <label className="block text-gray-700">Parking spot type:</label>
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            required
+          >
+            <option value="" disabled>
+              Select a parking spot type
+            </option>
+            <option value="Gated">Gated</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Garage">Garage</option>
+            <option value="Driveway">Driveway</option>
+            <option value="Curbside">Curbside</option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-gray-700">Maximum vehicle size:</label>
+          <select
+            name="size"
+            value={formData.size}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            required
+          >
+            <option value="" disabled>
+              Select a parking spot type
+            </option>
+            <option value="SUV">SUV</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Minivan">Minivan</option>
+            <option value="Compact">Compact</option>
+            <option value="Truck">Truck</option>
+          </select>
+        </div>
         <button
           type="submit"
           className="px-6 py-2 text-white bg-blue-500 rounded-md"
