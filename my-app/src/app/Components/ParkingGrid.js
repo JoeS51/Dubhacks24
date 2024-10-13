@@ -94,6 +94,7 @@ const ParkingGrid = () => {
             dates={`Now - ${formatDate(listing?.end)}`}
             key={listing._id}
             id={listing._id}
+            i={index}
           />
 
         ))}

@@ -1,14 +1,21 @@
 import React from 'react';
 import parkingSpot1 from '../Images/parkingspot.jpg';
 import Image from 'next/image';
+import park1 from '../Images/park1.jpg'
+import park2 from '../Images/park2.jpg'
+import park3 from '../Images/park3.jpg'
+import park9 from '../Images/park9.jpg'
+
+const images = [parkingSpot1, park9, park1, park2, park3];
 
 // components/ImageGallery.js
-const ImageGallery = () => {
+const ImageGallery = ({i}) => {
+  const randomImage = images[i];
   return (
     <div className="overflow-x-auto whitespace-nowrap h-96">
       <div className="flex justify-between items-center h-full space-x-4">
       <Image
-          src={parkingSpot1}
+          src={randomImage}
           alt="Main house"
           priority
           width={500} // Specify width
@@ -16,7 +23,7 @@ const ImageGallery = () => {
           // style={{ objectFit: 'cover' }} // Mimics Tailwind's object-cover for the img
         />
         <Image
-          src={parkingSpot1}
+          src={randomImage}
           alt="Main house"
           priority
           width={500} // Specify width
@@ -24,7 +31,7 @@ const ImageGallery = () => {
           // style={{ objectFit: 'cover' }} // Mimics Tailwind's object-cover for the img
         />
         <Image
-          src={parkingSpot1}
+          src={randomImage}
           alt="Main house"
           priority
           width={500} // Specify width
@@ -32,7 +39,7 @@ const ImageGallery = () => {
           // style={{ objectFit: 'cover' }} // Mimics Tailwind's object-cover for the img
         />
         <Image
-          src={parkingSpot1}
+          src={randomImage}
           alt="Main house"
           priority
           width={500} // Specify width
