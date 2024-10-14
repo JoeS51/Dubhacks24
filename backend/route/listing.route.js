@@ -88,7 +88,6 @@ router.get('/markers', async (req, res) => {
         console.error("Error fetching coordinates:", error);
         res.status(500).json({ message: 'Error fetching coordinates', error: error.message });
     }
-
 });
 
 router.get('/filter', async (req, res) => {
@@ -157,8 +156,23 @@ router.get('/get', async (req, res) => {
 
 
 router.post('/add', async (req, res) => {
+    console.log("reached post")
     try {
-        const { parentUsername, position, address, start, end, price, rating, numRatings, title, occupied, type, size, description } = req.body;
+        // const { parentUsername, position, address, start, end, price, rating, numRatings, title, occupied, type, size, description } = req.body;
+        
+        const parentUsername = req.body.parentUsername;
+        const position = req.body.position;
+        const address = req.body.address;
+        const start = req.body.start;
+        const end = req.body.end;
+        const price = req.body.price;
+        const rating = req.body.rating;
+        const numRatings = req.body.numRatings;
+        const title = req.body.title;
+        const occupied = req.body.occupied;
+        const type = req.body.type;
+        const size = req.body.size;
+        const description = req.body.description;
 
         // Create a new listing
         const newListing = new Listing({
@@ -176,10 +190,10 @@ router.post('/add', async (req, res) => {
             size,
             description
         });
-
+        console.log("NEW LISTING: ", newListing);
         // Save the listing to the database
         await newListing.save();
-
+        
         res.status(201).json({ message: 'Listing added successfully!', listing: newListing });
     } catch (err) {
         console.error("Error adding listing:", err); // Log the actual error
