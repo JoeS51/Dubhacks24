@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import ParkingCard from './ParkingCard';
-import parkingSpot1 from '../Images/parkingspot.jpg'
-import '../Styles/ParkingGrid.css'
-import axios from 'axios';
-import Park from '../../../public/Park';
-import park1 from '../Images/park1.jpg'
-import park2 from '../Images/park2.jpg'
-import park3 from '../Images/park3.jpg'
-import park9 from '../Images/park9.jpg'
+import parkingSpot1 from '../Images/parkingspot.jpg';
+import '../Styles/ParkingGrid.css';
+import park1 from '../Images/park1.jpg';
+import park2 from '../Images/park2.jpg';
+import park3 from '../Images/park3.jpg';
+import park9 from '../Images/park9.jpg';
 import FilterBar from './FilterBar';
 
 const images = [parkingSpot1, park9, park1, park2, park3];
 
 const ParkingGrid = () => {
-
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
     return date.toLocaleString('en-US', {
@@ -27,41 +24,74 @@ const ParkingGrid = () => {
     });
   };
 
-  const [listings, setListings] = useState([]);
-  const [filteredListings, setFilteredListings] = useState([]); // Filtered listings
+  // Hardcoded listings for testing
+  const [listings, setListings] = useState([
+    {
+      _id: '1',
+      title: 'Downtown Garage Parking',
+      address: { city: 'Seattle', state: 'WA' },
+      rating: 4.5,
+      numRatings: 120,
+      price: '$10/hr',
+      end: '2024-12-31T23:59:59Z',
+      size: 'SUV',
+      type: 'Gated',
+    },
+    {
+      _id: '2',
+      title: 'Curbside Parking Lot',
+      address: { city: 'Los Angeles', state: 'CA' },
+      rating: 4.0,
+      numRatings: 80,
+      price: '$8/hr',
+      end: '2024-11-30T23:59:59Z',
+      size: 'Sedan',
+      type: 'Lot',
+    },
+    {
+      _id: '3',
+      title: 'Covered Garage Space',
+      address: { city: 'New York', state: 'NY' },
+      rating: 4.7,
+      numRatings: 150,
+      price: '$15/hr',
+      end: '2024-12-15T20:00:00Z',
+      size: 'Minivan',
+      type: 'Garage',
+    },
+    {
+      _id: '4',
+      title: 'Open Lot near Park',
+      address: { city: 'San Francisco', state: 'CA' },
+      rating: 3.8,
+      numRatings: 60,
+      price: '$5/hr',
+      end: '2024-11-15T19:00:00Z',
+      size: 'Sedan',
+      type: 'Curbside',
+    },
+  ]);
+
+  const [filteredListings, setFilteredListings] = useState(listings);
   const [activeFilters, setActiveFilters] = useState([]);
 
   useEffect(() => {
-    // Function to fetch data
-    const fetchListings = async () => {
-      try {
-        const response = await axios.get('http://localhost:4000/api/listings/get');
-        console.log('API Response:', response.data); // Log the JSON data to console
-        setListings(response.data); // Optionally, store data in state
-        setFilteredListings(response.data); // Initialize filtered listings with all listings
-      } catch (error) {
-        console.error('Error fetching listings:', error);
-      }
-    };
-
-    fetchListings();
+    // If you'd normally fetch data, it has been replaced with hardcoded entries
+    setListings(listings);
+    setFilteredListings(listings);
   }, []); // Empty dependency array to run once on mount
 
-  // Function to handle filter changes from FilterBar
   const handleFilterChange = (filters) => {
     setActiveFilters(filters);
-  
-    // Filter listings based on active filters
+
     if (filters.length === 0) {
-      setFilteredListings(listings); // Show all listings if no filters are selected
+      setFilteredListings(listings);
     } else {
       const filtered = listings.filter((listing) => {
         return filters.every((filter) => {
-          // Get the description and handle undefined/null cases
           const size = listing.size ? listing.size.toLowerCase() : '';
-          const type = listing.size ? listing.type.toLowerCase() : '';
-  
-          // Example logic: match vehicle types or other conditions
+          const type = listing.type ? listing.type.toLowerCase() : '';
+
           if (filter === 'SUV') return size.includes('suv');
           if (filter === 'Sedan') return size.includes('sedan');
           if (filter === 'Minivan') return size.includes('minivan');
@@ -69,26 +99,24 @@ const ParkingGrid = () => {
           if (filter === 'Curbside') return type.includes('curbside');
           if (filter === 'Garage') return type.includes('garage');
           if (filter === 'Lot') return type.includes('lot');
-          
-          return false; // Default false for filters that don't match
+
+          return false;
         });
       });
-  
+
       setFilteredListings(filtered);
     }
   };
-  
 
   return (
     <div className="container">
       <FilterBar onFilterChange={handleFilterChange} />
       <div className="grid-container">
         {filteredListings.map((listing, index) => (
-
           <ParkingCard
             image={images[index % images.length]}
             title={listing?.title}
-            location={listing?.address?.city + ", " + listing?.address?.state}
+            location={`${listing?.address?.city}, ${listing?.address?.state}`}
             rating={listing?.rating}
             reviews={listing?.numRatings}
             priceNow={listing?.price}
@@ -97,7 +125,6 @@ const ParkingGrid = () => {
             id={listing._id}
             i={index}
           />
-
         ))}
       </div>
     </div>
